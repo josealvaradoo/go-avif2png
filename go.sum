@@ -1,0 +1,6 @@
+github.com/ebitengine/purego v0.8.1 h1:sdRKd6plj7KYW33EH5As6YKfe8m9zbN9JMrOjNVF/BE=
+github.com/ebitengine/purego v0.8.1/go.mod h1:iIjxzd6CiRiOG0UyXP+V1+jWqUXVjPKLAI0mRfJZTmQ=
+github.com/gen2brain/avif v0.4.0 h1:JuwAX2rVrkAzQrZx9lpIKx/ovCO35gCUquarfJ6uhHc=
+github.com/gen2brain/avif v0.4.0/go.mod h1:oePci7KPleKZ8X/2rjZ3FlVm2JFYjPwXiQpNgq9wrzs=
+github.com/tetratelabs/wazero v1.8.1 h1:NrcgVbWfkWvVc4UtT4LRLDf91PsOzDzefMdwhLfA550=
+github.com/tetratelabs/wazero v1.8.1/go.mod h1:yAI0XTsMBhREkM/YDAK/zNou3GoiAce1P6+rp/wQhjs=
