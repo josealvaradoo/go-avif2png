@@ -8,6 +8,7 @@ bin/
 
 # Test binary
 *.test
+test-images/
 
 # Output directory
 output/
