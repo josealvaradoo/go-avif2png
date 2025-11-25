@@ -5,8 +5,8 @@ A fast and simple CLI tool to convert AVIF images to PNG format, written in Go.
 ## Features
 
 - ✅ Convert AVIF to PNG format
-- 📁 Custom output directory support
-- 🛡️ Overwrite protection
+- 📁 Bulk directory conversion (with optional recursive mode)
+- 🛡️ Overwrite protection (automatically skips existing files)
 - 📝 Verbose mode for detailed output
 - ⚡ Fast and lightweight
 
@@ -34,6 +34,8 @@ go install github.com/yourusername/avif2png/cmd/avif2png@latest
 
 ## Usage
 
+### Single File Conversion
+
 ```bash
 # Basic usage (outputs to ./output/)
 avif2png image.avif
@@ -45,17 +47,54 @@ avif2png --output ./converted image.avif
 # Verbose mode
 avif2png -v image.avif
 avif2png --verbose image.avif
+```
+
+### Bulk Directory Conversion
+
+```bash
+# Convert all AVIF files in a directory (non-recursive)
+avif2png my-images/
+avif2png -o ./converted my-images/
+
+# Recursive mode (includes subdirectories)
+avif2png -r my-images/
+avif2png --recursive my-images/
 
 # Combine flags
-avif2png -v -o ./my-folder image.avif
+avif2png -r -v -o ./converted my-images/
+```
+
+### Output Structure
+
+When converting directories, all PNG files are saved directly to the output directory with a flattened structure:
+
+```
+input/
+  ├── photo1.avif
+  └── subfolder/
+      └── photo2.avif
+
+# After: avif2png -r input/ -o output/
+
+output/
+  ├── photo1.png
+  └── photo2.png  (flattened, not in subfolder)
 ```
 
 ## Options
 
-| Flag        | Short | Description           | Default    |
-| ----------- | ----- | --------------------- | ---------- |
-| `--output`  | `-o`  | Output directory      | `./output` |
-| `--verbose` | `-v`  | Enable verbose output | `false`    |
+| Flag          | Short | Description                         | Default    |
+| ------------- | ----- | ----------------------------------- | ---------- |
+| `--output`    | `-o`  | Output directory                    | `./output` |
+| `--recursive` | `-r`  | Recursively process subdirectories  | `false`    |
+| `--verbose`   | `-v`  | Enable verbose output               | `false`    |
+
+## Behavior
+
+- **Overwrite Protection**: Existing PNG files are automatically skipped (not overwritten)
+- **Hidden Files**: Files starting with `.` are ignored
+- **Case Insensitive**: Accepts both `.avif` and `.AVIF` extensions
+- **Flattened Output**: Directory conversion outputs all files to a single directory (no subdirectories)
 
 ## Development
 
